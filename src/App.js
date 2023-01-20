@@ -14,15 +14,25 @@ import Community from './Pages/Community'
 import Consult from './Pages/Consult'
 import Support from './Pages/Support'
 import Exercise from './Pages/Exercise'
+import ChooseSpeciality from './Pages/ChooseSpeciality'
+import ChooseDoc from './Pages/ChooseDoctor'
+import BookAppointments from './Pages/BookAppointments'
+// import BookAppointments from './Pages/BookAppointments'
+import MyAccount from './Pages/MyAccount'
+import Alan from './Components/Alan'
 
 function App() {
   return (
     <>
+      
       <Router>
         <Routes>
-          <Route exact path="/" element={<Toolbar />} />
+          <Route path="/" element={<Consult />} />
+          <Route path="/chooseSpeciality" element={<ChooseSpeciality />} />
+          <Route path="/chooseDoc" element={<ChooseDoc />} />
+          <Route path="/bookAppt" element={<BookAppointments />} />
+          <Route path="/myAccount" element={<MyAccount />} />
           <Route path="/community" element={<Community />} />
-          <Route path="/consult" element={<Consult />} />
           <Route path="/support" element={<Support />} />
           <Route path="/exercise" element={<Exercise />} />
           {/* <Route path="/appguide" element={<AppGuide />} />

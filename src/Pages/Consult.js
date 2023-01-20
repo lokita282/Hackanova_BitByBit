@@ -4,27 +4,22 @@ import Paper from '@mui/material/Paper'
 import Sidebar from "../Components/Sidebar";
 import Toolbar from "../Components/Toolbar";
 import Deposits from "../Components/Deposits";
+import Card from "../Components/ConsultCard";
+import Specialities from '../Components/Specialities'
+import HowItWorks from '../Components/HowItWorks'
+import Alan from "../Components/Alan"
+
 
 const Consult = () => {
+  const fragment = <>Consult</>
   return (
     <>
+      <Alan style={{ position: 'fixed' }} />
       <Toolbar />
-      <Sidebar >
-        {/* Recent Deposits */}
-        {/* <Grid item xs={12} md={4} lg={3}>
-          <Paper
-            sx={{
-              p: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              height: 240,
-            }}
-          >
-            <Deposits />
-          </Paper>
-        </Grid> */}
-        consult
-        {/* </Toolbar> */}
+      <Sidebar>
+        <Card />
+        <Specialities />
+        <HowItWorks />
       </Sidebar>
     </>
   )

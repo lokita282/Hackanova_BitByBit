@@ -17,25 +17,18 @@ import AssignmentIcon from '@mui/icons-material/Assignment'
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton href="/">
       <ListItemIcon>
         <VideoCallIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="Consult a Doctor" />
     </ListItemButton>
 
-    <ListItemButton>
+    <ListItemButton href="/myAccount">
       <ListItemIcon>
         <AccountCircleIcon sx={{ color: '#12295C' }}/>
       </ListItemIcon>
       <ListItemText primary="My Account" />
-    </ListItemButton>
-
-    <ListItemButton>
-      <ListItemIcon>
-        <ScienceIcon sx={{ color: '#12295C' }}/>
-      </ListItemIcon>
-      <ListItemText primary="Lab Tests" />
     </ListItemButton>
 
     <ListItemButton>
