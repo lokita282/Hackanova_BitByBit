@@ -3,6 +3,7 @@ import numpy as np
 import mediapipe as mp
 import threading
 import streamlit as st
+from datetime import date
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators import gzip
@@ -134,43 +135,31 @@ def gen_frame():
                 yield (b'--frame\r\n'
                         b'Content-Type: image/jpeg\r\n\r\n' + blank_bg + b'\r\n')
 
-def Home2():
-    return render('index.html')
+def Home2(request):
+    return render(request, 'index.html')
 
 def video_feed(request):
     print(47.143)    
     return StreamingHttpResponse(gen_frame(), content_type="multipart/x-mixed-replace;boundary=frame")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def report(request):
-    img = cv2.imread('report_temp.jpg')
+    img = cv2.imread('report_temp_og.jpg')
     name = "Patient1"
-    coordinates = (100,100)
+    age = "20"
+    gender = "Male"
+    address = "address line"
+    dat = str(date.today())
+    medicine = "Medicine 1           x 2 times a day"
+    coordinates = (420,990)
     font = cv2.FONT_HERSHEY_SIMPLEX
     fontScale = 1
     color = (255,0,255)
     thickness = 2
-    img = cv2.putText(img, name, coordinates, font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, name, (470,780), font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, age, (1000,780), font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, gender, (1225,780), font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, address, (418,850), font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, dat, (1042,850), font, fontScale, color, thickness, 5)
+    img = cv2.putText(img, medicine, coordinates, font, fontScale, color, thickness, 5)
     cv2.imwrite("report_temp.jpg", img)
     return HttpResponse(request, "Done")
