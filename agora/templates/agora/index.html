@@ -36,7 +36,7 @@
             <div class="col-12 text-center">
               <img
                 src="{% static 'agora/agora-logo.png' %}"
-                alt="Agora Logo"
+                alt="WeCare Video Chat"
                 class="block img-fuild"
               />
             </div>
@@ -51,12 +51,10 @@
                   type="button"
                   class="btn btn-primary mr-2"
 
-                  @click="placeCall('{{singleUser.id}}','{{singleUser}}')"
-                >
+                  @click="placeCall('{{singleUser.id}}','{{singleUser}}')">
                   Call {{ singleUser }}
                   <span class="badge badge-light"
-                    >${ getUserOnlineStatus({{singleUser.id}})}</span
-                  >
+                    >${ getUserOnlineStatus({{singleUser.id}})}</span>
                 </button>
 
                 {% endfor %}
@@ -135,7 +133,7 @@
       const CSRF_TOKEN = "{{ csrf_token }}"
     </script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js""
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{% static 'agora/index.js' %}"></script>
