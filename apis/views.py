@@ -11,6 +11,11 @@ from mediapipe.python.solutions.face_mesh_connections import FACEMESH_CONTOURS
 
 # Create your views here.
 
+################################ Code fir Holistic 
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
+mp_holistic = mp.solutions.holistic
+
 @gzip.gzip_page 
 def Home(request):
     try:
@@ -133,7 +138,7 @@ def Home2():
     return render('index.html')
 
 def video_feed(request):
-    print(1)    
+    print(47.143)    
     return StreamingHttpResponse(gen_frame(), content_type="multipart/x-mixed-replace;boundary=frame")
 
 
@@ -154,64 +159,18 @@ def video_feed(request):
 
 
 
-################################ Code fir Holistic 
-mp_drawing = mp.solutions.drawing_utils
-mp_drawing_styles = mp.solutions.drawing_styles
-mp_holistic = mp.solutions.holistic
 
-                
-# def video_feed(request):
-#     return StreamingHttpResponse(VR(), content_type='multipart/x-mixed-replace; boundary=frame')
 
-def VR(request):
-    cap = cv2.VideoCapture(0)
-    # Initiate holistic model
-    with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
-        
-        while cap.isOpened():
-            blank_bg = cv2.imread("black background.jpg")
-            ret, frame = cap.read()
-            
-            # Convert the feed from BGR to RGB
-            image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            # Refer the section above how to make detections on feed
-            results = holistic.process(image)
-    
-            # Recolor image back to BGR for rendering
-            image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            
-            # 1. Draw face landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
-                                    mp_drawing.DrawingSpec(color=(120,110,10), thickness=1, circle_radius=1),
-                                    mp_drawing.DrawingSpec(color=(120,256,121), thickness=1, circle_radius=1)
-                                    )
-            
-            # 2. Draw Right hand landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                    mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4),
-                                    mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
-                                    )
 
-            # 3. Draw Left Hand landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                    mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
-                                    mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
-                                    )
 
-            # 4. Draw Pose Detections
-            mp_drawing.draw_landmarks(blank_bg, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, 
-                                    mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=4),
-                                    mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2)
-                                    )
-                            
-            cv2.imshow('Holistic Model Detections', blank_bg)
-
-            if cv2.waitKey(10) & 0xFF == ord('q'):
-                break
-            if cv2.waitKey(5) & 0xFF == 27:
-                break
-
-    cap.release()
-    cv2.destroyAllWindows()
-
-    return render(request, 'home.html')
+def report(request):
+    img = cv2.imread('report_temp.jpg')
+    name = "Patient1"
+    coordinates = (100,100)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale = 1
+    color = (255,0,255)
+    thickness = 2
+    img = cv2.putText(img, name, coordinates, font, fontScale, color, thickness, 5)
+    cv2.imwrite("report_temp.jpg", img)
+    return HttpResponse(request, "Done")

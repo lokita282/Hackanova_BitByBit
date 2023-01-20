@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AgoraConfig(AppConfig):
+class WhatsappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'agora'
+    name = 'whatsapp'
