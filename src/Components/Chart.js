@@ -23,7 +23,7 @@ const data = [
   createData('Thursday', 134),
   createData('Friday', 188),
   createData('Saturday', 10),
-  createData('Sunday', 110),
+  createData('Sunday', 0),
 ]
 
 export default function Chart() {

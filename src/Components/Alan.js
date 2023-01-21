@@ -21,6 +21,10 @@ const Home = () => {
         if (commandData.command === 'exercise') {
           nav('/exercise')
         }
+
+        if (commandData.command === 'SOS') {
+          nav('https://facc-123-252-147-170.in.ngrok.io/whatsapp/sos')
+        }
         // if (commandData.command === 'learn') {
         //   nav('/learn')
         // }
