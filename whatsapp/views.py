@@ -17,3 +17,10 @@ def send(request):
     pywhatkit.sendwhatmsg_instantly(number, message)
 
     return redirect('http://localhost:3000')
+
+def sos(request):
+    number = '+918492010352'
+    message = "This is a distress signal from Lokita Varma, please get in touch with her asap."
+    pywhatkit.sendwhatmsg_instantly(number, message)
+
+    return redirect('http://localhost:3000')
