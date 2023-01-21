@@ -5,7 +5,8 @@ from apis.views import report
 # Create your views here.
 
 def onlineMeet(request):
-    webbrowser.open('https://console.agora.io/invite?sign=eb5105ce6a6e624f99729809ff681f5d%253Aa83437bd5081355f0f7f62be39c752fedea69bda71561b91afdf2888ceb11f6f', 2)
+    link = "https://console.agora.io/invite?sign=0535b61d1e6d22ab32e27bd16b1f181e%253A4db31330d68186d59fb2868a1b09b4589b7d13be79eb0e425ad4c4313cb699e0"
+    webbrowser.open(link, 2)
     img = open('report_temp.jpg', 'rb')
 
     response = FileResponse(img)

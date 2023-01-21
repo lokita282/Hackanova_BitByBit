@@ -29,3 +29,7 @@ def donate(request):
 @csrf_exempt
 def success(request):
     return render(request, "pay_success.html")
+
+@csrf_exempt
+def success(request):
+    return render(request, "pay_success.html")
