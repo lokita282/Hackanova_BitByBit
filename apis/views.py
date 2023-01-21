@@ -1,11 +1,12 @@
 import cv2
+import random
 import numpy as np
 import mediapipe as mp
 import threading
 import streamlit as st
 from datetime import date
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
 from mediapipe.python.solutions.face_mesh_connections import FACEMESH_CONTOURS
@@ -42,25 +43,25 @@ class VideoCamera(object):
             blank_bg = cv2.imread("black background.jpg")
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = holistic.process(image)
-            image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            # image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             
-            # 1. Draw face landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
-                                    mp_drawing.DrawingSpec(color=(120,110,10), thickness=1, circle_radius=1),
-                                    mp_drawing.DrawingSpec(color=(120,256,121), thickness=1, circle_radius=1)
-                                    )
+            # # 1. Draw face landmarks
+            # mp_drawing.draw_landmarks(blank_bg, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
+            #                         mp_drawing.DrawingSpec(color=(120,110,10), thickness=1, circle_radius=1),
+            #                         mp_drawing.DrawingSpec(color=(120,256,121), thickness=1, circle_radius=1)
+            #                         )
             
-            # 2. Draw Right hand landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                    mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4),
-                                    mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
-                                    )
+            # # 2. Draw Right hand landmarks
+            # mp_drawing.draw_landmarks(blank_bg, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+            #                         mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4),
+            #                         mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
+            #                         )
 
-            # 3. Draw Left Hand landmarks
-            mp_drawing.draw_landmarks(blank_bg, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                    mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
-                                    mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
-                                    )
+            # # 3. Draw Left Hand landmarks
+            # mp_drawing.draw_landmarks(blank_bg, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+            #                         mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
+            #                         mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
+            #                         )
 
             # 4. Draw Pose Detections
             mp_drawing.draw_landmarks(blank_bg, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, 
@@ -104,25 +105,25 @@ def gen_frame():
                 blank_bg = cv2.imread("black background.jpg")
                 image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 results = holistic.process(image)
-                image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+                # image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
                 
-                # 1. Draw face landmarks
-                mp_drawing.draw_landmarks(blank_bg, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
-                                        mp_drawing.DrawingSpec(color=(120,110,10), thickness=1, circle_radius=1),
-                                        mp_drawing.DrawingSpec(color=(120,256,121), thickness=1, circle_radius=1)
-                                        )
+                # # 1. Draw face landmarks
+                # mp_drawing.draw_landmarks(blank_bg, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
+                #                         mp_drawing.DrawingSpec(color=(120,110,10), thickness=1, circle_radius=1),
+                #                         mp_drawing.DrawingSpec(color=(120,256,121), thickness=1, circle_radius=1)
+                #                         )
                 
-                # 2. Draw Right hand landmarks
-                mp_drawing.draw_landmarks(blank_bg, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                        mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4),
-                                        mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
-                                        )
+                # # 2. Draw Right hand landmarks
+                # mp_drawing.draw_landmarks(blank_bg, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+                #                         mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4),
+                #                         mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
+                #                         )
 
-                # 3. Draw Left Hand landmarks
-                mp_drawing.draw_landmarks(blank_bg, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
-                                        mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
-                                        mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
-                                        )
+                # # 3. Draw Left Hand landmarks
+                # mp_drawing.draw_landmarks(blank_bg, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+                #                         mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
+                #                         mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
+                #                         )
 
                 # 4. Draw Pose Detections
                 mp_drawing.draw_landmarks(blank_bg, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, 
@@ -139,7 +140,7 @@ def Home2(request):
     return render(request, 'index.html')
 
 def video_feed(request):
-    print(47.143)    
+    acc = random.uniform(43,56)  
     return StreamingHttpResponse(gen_frame(), content_type="multipart/x-mixed-replace;boundary=frame")
 
 def report(request):
@@ -162,4 +163,8 @@ def report(request):
     img = cv2.putText(img, dat, (1042,850), font, fontScale, color, thickness, 5)
     img = cv2.putText(img, medicine, coordinates, font, fontScale, color, thickness, 5)
     cv2.imwrite("report_temp.jpg", img)
-    return HttpResponse(request, "Done")
+    img = open('report_temp.jpg', 'rb')
+
+    response = FileResponse(img)
+
+    return response
