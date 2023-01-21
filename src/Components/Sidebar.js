@@ -80,7 +80,20 @@ function ResponsiveDrawer(props) {
       <Button
         href="/signIn"
         sx={{
-          marginTop: '300px',
+          marginTop: '270px',
+          marginLeft: '79px',
+          backgroundColor: '#FF5C5D',
+        }}
+        variant="contained"
+        color="primary"
+        href="https://facc-123-252-147-170.in.ngrok.io/whatsapp/sos"
+      >
+        SOS
+      </Button>
+      <Button
+        href="/signIn"
+        sx={{
+          marginTop: '20px',
           marginLeft: '65px',
           backgroundColor: '#12295C',
         }}

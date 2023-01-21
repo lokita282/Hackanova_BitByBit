@@ -14,16 +14,16 @@ const Home = () => {
           nav('/')
         }
 
-        // if (commandData.command === 'logout') {
-        //   nav('/')
-        // }
+        if (commandData.command === 'appointment') {
+          nav('/chooseSpeciality')
+        }
 
-        if (commandData.command === 'viewEvents') {
-          nav('/events')
+        if (commandData.command === 'exercise') {
+          nav('/exercise')
         }
-        if (commandData.command === 'learn') {
-          nav('/learn')
-        }
+        // if (commandData.command === 'learn') {
+        //   nav('/learn')
+        // }
         // if (commandData.command === 'watchTutorials') {
         //   nav('/tutorials')
         // }

@@ -102,7 +102,11 @@ const Exercise = () => {
                 <TableCell>{row.targetMuscles}</TableCell>
                 <TableCell>{row.duration}</TableCell>
                 <TableCell style={{ paddingLeft: '50px' }}>
-                  <Button variant="text" color="primary">
+                  <Button
+                    href="http://192.168.137.249:5000/cool"
+                    variant="text"
+                    color="primary"
+                  >
                     Start now
                   </Button>
                 </TableCell>
