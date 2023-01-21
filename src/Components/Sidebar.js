@@ -77,6 +77,18 @@ function ResponsiveDrawer(props) {
           {/* {secondaryListItems} */}
         </div>
       </List>
+      <Button
+        href="/signIn"
+        sx={{
+          marginTop: '300px',
+          marginLeft: '65px',
+          backgroundColor: '#12295C',
+        }}
+        variant="contained"
+        color="primary"
+      >
+        Logout
+      </Button>
     </div>
   )
 
@@ -93,7 +105,6 @@ function ResponsiveDrawer(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -103,7 +114,6 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-        </Toolbar>
       </AppBar>
       <Box
         component="nav"

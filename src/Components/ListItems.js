@@ -26,35 +26,35 @@ export const mainListItems = (
 
     <ListItemButton href="/myAccount">
       <ListItemIcon>
-        <AccountCircleIcon sx={{ color: '#12295C' }}/>
+        <AccountCircleIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="My Account" />
     </ListItemButton>
 
-    <ListItemButton>
+    {/* <ListItemButton href="/medicines">
       <ListItemIcon>
-        <MedicationIcon sx={{ color: '#12295C' }}/>
+        <MedicationIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="Medicines" />
-    </ListItemButton>
+    </ListItemButton> */}
 
-    <ListItemButton>
+    <ListItemButton href="/exercise">
       <ListItemIcon>
-        <FitnessCenterIcon sx={{ color: '#12295C' }}/>
+        <FitnessCenterIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="Exercise" />
     </ListItemButton>
 
-    <ListItemButton>
+    <ListItemButton href="/community">
       <ListItemIcon>
-        <PeopleIcon sx={{ color: '#12295C' }}/>
+        <PeopleIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="Community" />
     </ListItemButton>
 
-    <ListItemButton>
+    <ListItemButton href="/support">
       <ListItemIcon>
-        <HelpIcon sx={{ color: '#12295C' }}/>
+        <HelpIcon sx={{ color: '#12295C' }} />
       </ListItemIcon>
       <ListItemText primary="Support" />
     </ListItemButton>

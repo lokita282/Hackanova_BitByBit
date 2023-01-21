@@ -102,7 +102,7 @@ function DashboardContent({ heading}) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              WeCare
             </Typography>
             {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">

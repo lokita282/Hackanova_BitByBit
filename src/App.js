@@ -17,8 +17,8 @@ import Exercise from './Pages/Exercise'
 import ChooseSpeciality from './Pages/ChooseSpeciality'
 import ChooseDoc from './Pages/ChooseDoctor'
 import BookAppointments from './Pages/BookAppointments'
-// import BookAppointments from './Pages/BookAppointments'
-import MyAccount from './Pages/MyAccount'
+import Medicines from './Pages/Medicines'
+import SignIn from './Pages/SignIn'
 import Alan from './Components/Alan'
 
 function App() {
@@ -31,13 +31,13 @@ function App() {
           <Route path="/chooseSpeciality" element={<ChooseSpeciality />} />
           <Route path="/chooseDoc" element={<ChooseDoc />} />
           <Route path="/bookAppt" element={<BookAppointments />} />
-          <Route path="/myAccount" element={<MyAccount />} />
+          <Route path="/myAccount" element={<Dashboard />} />
+          <Route path="/medicines" element={<Medicines />} />
           <Route path="/community" element={<Community />} />
           <Route path="/support" element={<Support />} />
           <Route path="/exercise" element={<Exercise />} />
-          {/* <Route path="/appguide" element={<AppGuide />} />
-          <Route path="/webinars" element={<Webinars />} />
-          <Route path="/task" element={<PerformTask />} /> */}
+          <Route path="/signIn" element={<SignIn />} />
+
         </Routes>
       </Router>
     </>

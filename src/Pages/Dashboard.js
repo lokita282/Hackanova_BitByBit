@@ -21,6 +21,9 @@ import { mainListItems, secondaryListItems } from '../Components/ListItems';
 import Chart from '../Components/Chart';
 import Deposits from '../Components/Deposits';
 import Orders from '../Components/Orders';
+import Appointments from '../Components/Appointments';
+
+import Alan from '../Components/Alan'
 
 import logo from '../Images/logo.png'
 
@@ -99,6 +102,8 @@ function DashboardContent() {
   };
 
   return (
+    <>
+    <Alan style={{ position: 'fixed' }} />
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -129,7 +134,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              WeCare
             </Typography>
             {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -182,12 +187,55 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          {/*ADD COMPONENTS*/}
-          
-          {/* <Support /> */}
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            {/* Appointments */}
+            <div style={{ marginBottom: '25px' }}>
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <Appointments />
+                </Paper>
+              </Grid>
+            </div>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Chart />
+                </Paper>
+              </Grid>
+              {/* Recent Deposits */}
+              <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Deposits />
+                </Paper>
+              </Grid>
+              {/* Recent Orders */}
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <Orders />
+                </Paper>
+              </Grid>
+            </Grid>
+            <Copyright sx={{ pt: 4 }} />
+          </Container>
         </Box>
       </Box>
     </ThemeProvider>
+    </>
   )
 }
 
