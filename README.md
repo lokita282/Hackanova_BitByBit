@@ -5,11 +5,7 @@
 Even in current times, when India is inclining more towards digitalization, the medical sector is left behind. Hence there is a need of improving medical online consultation through digitalization in healthcare to make it more accessible to people in need. Some of the advantages of telemedicine include remote monitoring and reduced medical visits. This can be done through video conferencing or other virtual technologies. Thus, telemedicine saves both the patient and the healthcare provider time and the cost of the treatment. Furthermore, due to its fast and advantageous characteristics, it can streamline the workflow of hospitals and clinics.  This technology would make it easier to monitor discharged patients and manage their recovery. As a result, it is sufficient to state that telemedicine can create a win-win situation. Hence the aim is to build an application that solves all these problems in an easy and efficient manner.
 
 ## Our Solution
-<b>WeCare</b> - an online medical health consultation tool
-
-## Authors
-Lokita Varma \
-Sarthak Bhan 
+<b>WeCare</b> - an online medical health consultation tool 
 
 ## Features
 #### Homepage
